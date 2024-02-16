@@ -1,0 +1,54 @@
+.Customiza select[readonly]{
+	pointer-events: none;
+}
+
+#DESCRITOR-error{
+	display: none !important;
+}
+
+.Customiza .trReprovado{
+	background-color: #ff585836 !important;
+}
+
+.Customiza .trAprovado{
+	background-color: #2ff92436 !important;
+}
+
+.Customiza .VIEW .divSpanGroup .spanGroup, .Customiza .Customiza-disabled .divSpanGroup .spanGroup{
+	display: none !important;
+}
+
+.Customiza .has-error label.error{
+	display: block !important;
+}
+
+.Customiza .btn.btn-default.sim.active{
+    background-color: #8bc34a69;
+}
+.Customiza .btn.btn-default.nao.active{
+    background-color: #c34a4a69;
+}
+.Customiza .btn.btn-default.outro.active{
+    background-color: #ffeb3ba8;
+}
+
+.Customiza .active.icoAprovado{
+	color: green !important;
+}
+.Customiza .active.icoFalta{
+	color: yellow !important;
+}
+.Customiza .active.icoReprovado{
+	color: red !important;
+}
+.Customiza .input-group-btn button {
+    height: 33px;
+}
+.Customiza .form-group.has-error .input-group-btn button {
+    color: #a94442;
+    border-color: #a94442;
+    background-color: #f2dede;
+}
+.Customiza .fluig-style-guide .has-error label {
+    color: #a94442;
+}

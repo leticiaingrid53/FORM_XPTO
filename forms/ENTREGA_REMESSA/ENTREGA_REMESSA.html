@@ -1,0 +1,446 @@
+<html>
+<head>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <link type="text/css" rel="stylesheet" href="custom.css">
+	<link type="text/css" rel="stylesheet" href="margin.css">
+	<link type="text/css" rel="stylesheet" href="moment.min.js">
+</head>
+    <body class="Customiza">
+        <div class="fluig-style-guide" onload="load()">
+            <div class="col-md-12">
+                <form class="modForm" role="form" id="frm">
+                    <!-- INÍCIO: título de cabeçalho -->
+                    <div class="page-header">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <h1 class="fs-no-margin fs-ellipsis fs-full-width Customiza-colormenu"><i class="flaticon flaticon-product icon-xl" aria-hidden="true"></i>	Entrega de Remessa <small class="hidden-xs"></small></h1>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FINAL: título de cabeçalho -->
+                    
+					<!-- INÍCIO: cabeçalho do formulário -->
+					<section class="secCabecalho" id="secCabecalho">
+						<div class="row">
+							<div class="col-xs-12 col-sm-6 col-md-6">
+								<div class="form-group">
+									<label class="control-label" for="PROTOCOLO">Nº Protocolo</label>
+									<input type="number" class="form-control NumSolic" name="PROTOCOLO" readonly>
+									<p class="help-block"></p>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-6">
+								<div class="form-group">
+									<label class="control-label" for="cpDataAbertura">Data</label>
+									<input type="text" class="form-control DataSolic" name="cpDataAbertura" readonly>
+									<p class="help-block"></p>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!-- FINAL: cabeçalho do formulário -->
+                    
+                    <!-- INÍCIO: informações do solicitante -->
+                    <section class="secSolicitante well" id="secSolicitante">
+                        <div class="page-header">
+                        	<h4>
+                          	 <h4><span class="fas fa-user"></span> Dados do Solicitante <small class="hidden-xs"></small></h4>
+                       		</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="cpSolicitante">Nome do Solicitante</label>
+                                    <input type="text" class="form-control" name="cpSolicitante" readonly>
+                                    <input type="hidden" class="form-control" name="cpMatriculaSolicitante" >
+                                    <input type="hidden" class="form-control" name="cpLoginFluig" >
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="cpEmailSol">Email do Solicitante</label>
+                                    <input type="text" class="form-control" name="cpEmailSol" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- FINAL: informações do solicitante -->
+
+                    <!-- INICIO: Dados da filial origem-->
+					<section class="secFilialOrigem well" id="secFilialOrigem">
+						<div class="page-header">
+                        	<h4>
+                          	 <h4><i class="fluigicon fluigicon-export icon-md" aria-hidden="true"></i> Informações Filial de Origem<small class="hidden-xs"></small></h4>
+                       		</h4>
+                        </div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-6 col-md-6 controlaview">
+								<div class="form-group">
+									<label class="control-label" for="txtFilialOrigem">Filial de Origem<span style="color: red;">*</span></label>
+									<input type="zoom" id="txtFilialOrigem" name="txtFilialOrigem"
+									data-zoom="{
+										'displayKey':'txtNomeFilial',
+										'datasetId':'CADASTRA_FILIAL',
+										'maximumSelectionLength':'1',
+										'placeholder':'Selecione a filial de origem',
+										'fields':[
+										{
+											'field':'txtCodigoFilial',
+											'label':'Código',
+											'standard':'true',
+											'search':'true'
+										},
+										{
+											'field':'txtNomeFilial',
+											'label':'Nome',
+											'standard':'true',
+											'search':'true'
+										},
+										{
+											'field':'txtBairro',
+											'label':'Bairro',
+											'visible': 'false'
+										},
+										{
+											'field':'txtCEP',
+											'label':'CEP',
+											'visible': 'false'
+										},
+										{
+											'field':'txtCidade',
+											'label':'Cidade',
+											'visible': 'false'
+										},
+										{
+											'field':'txtEstado',
+											'label':'Estado',
+											'visible': 'false'
+										},
+										{
+											'field':'txtRua',
+											'label':'Rua',
+											'visible': 'false'
+										},
+										{
+											'field':'txtNumero',
+											'label':'Número',
+											'visible': 'false'
+										}
+										]
+									}"
+									/>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-6" id="txtCodigoFilialOrigem" hidden>
+								<div class="form-group">
+									<label class="control-label" for="txtCodigoFilialOrigem">Filial de Origem <span style="color: red;">*</span></label>
+									<input type="text" class="form-control" name="txtCodigoFilialOrigem" readonly>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sx-12 col-sm-4 col-md-4">
+								<div class="form-group">
+									<label class="control-label" for="txtCEPOrigem">CEP Origem<span style="color: red;">*</span></label>
+									<input type="text" class="form-control" name="txtCEPOrigem" readonly required>
+								</div>
+							</div>	
+							<div class="col-xs-12 col-sm-4 col-md-4">
+								<div class="form-group">
+									<label class="control-label" for="txtEstadoOrigem">Estado Origem<span style="color: red;">*</span></label>
+									<input type="text" class="form-control" name="txtEstadoOrigem" readonly required>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-4">
+								<div class="form-group">
+									<label class="control-label" for="txtCidadeOrigem">Cidade Origem<span style="color: red;">*</span></label>
+									<input type="text" class="form-control" name="txtCidadeOrigem" readonly required>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-4 col-md-4">
+								<div class="form-group">
+									<label class="control-label" for="txtBairroOrigem">Bairro Origem<span style="color: red;">*</span></label>
+									<input type="text" class="form-control" name="txtBairroOrigem" readonly required>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-4">
+								<div class="form-group">
+									<label class="control-label" for="txtRuaOrigem">Rua Origem<span style="color: red;">*</span></label>
+									<input type="text" class="form-control" name="txtRuaOrigem" readonly required>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-4">
+								<div class="form-group">
+									<label class="control-label" for="txtNumeroOrigem">Número Origem<span style="color: red;">*</span></label>
+									<input type="text" class="form-control" name="txtNumeroOrigem" readonly required>
+								</div>
+							</div>
+						</div>
+					</section>
+                    <!-- FINAL: Dados da filial origem -->
+
+					<!-- INICIO: Dados da filial destino-->
+					<section class="secFilialDestino well" id="secFilialDestino">
+						<div class="page-header">
+							<h4>
+								<h4><i class="fluigicon fluigicon-import icon-md" aria-hidden="true"></i> Informações Filial de Destino<small class="hidden-xs"></small></h4>
+								</h4>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-6 col-md-6 controlaview">
+								<div class="form-group">
+									<label class="control-label" for="txtFilialDestino">Filial de Destino<span style="color: red;">*</span></label>
+									<input type="zoom" id="txtFilialDestino" name="txtFilialDestino"
+									data-zoom="{
+										'displayKey':'txtNomeFilial',
+										'datasetId':'CADASTRA_FILIAL',
+										'maximumSelectionLength':'1',
+										'placeholder':'Selecione a filial de destino',
+										'fields':[
+										{
+											'field':'txtCodigoFilial',
+											'label':'Código',
+											'standard':'true',
+											'search':'true'
+										},
+										{
+											'field':'txtNomeFilial',
+											'label':'Nome',
+											'standard':'true',
+											'search':'true'
+										},
+										{
+											'field':'txtCodigoRespAlmoxarifado',
+											'label':'Reponsável',
+											'visible': 'false'
+										},
+										{
+											'field':'txtBairro',
+											'label':'Bairro',
+											'visible': 'false'
+										},
+										{
+											'field':'txtCEP',
+											'label':'CEP',
+											'visible': 'false'
+										},
+										{
+											'field':'txtCidade',
+											'label':'Cidade',
+											'visible': 'false'
+										},
+										{
+											'field':'txtEstado',
+											'label':'Estado',
+											'visible': 'false'
+										},
+										{
+											'field':'txtRua',
+											'label':'Rua',
+											'visible': 'false'
+										},
+										{
+											'field':'txtNumero',
+											'label':'Número',
+											'visible': 'false'
+										}
+										]
+									}"
+									/>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-6" id="txtCodigoFilialDestino" hidden>
+								<div class="form-group">
+									<label class="control-label" for="txtCodigoFilialDestino">Filial de Destino <span style="color: red;">*</span></label>
+									<input type="text" class="form-control" name="txtCodigoFilialDestino" readonly>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-4 col-md-4">
+								<div class="form-group">
+									<label class="control-label" for="txtCEPDestino">CEP Destino<span style="color: red;">*</span></label>
+									<input type="text" class="form-control" name="txtCEPDestino" readonly required>
+								</div>
+							</div>	
+							<div class="col-xs-12 col-sm-4 col-md-4">
+								<div class="form-group">
+									<label class="control-label" for="txtEstadoDestino">Estado Destino<span style="color: red;">*</span></label>
+									<input type="text" class="form-control" name="txtEstadoDestino" readonly required>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-4">
+								<div class="form-group">
+									<label class="control-label" for="txtCidadeDestino">Cidade Destino<span style="color: red;">*</span></label>
+									<input type="text" class="form-control" name="txtCidadeDestino" readonly required>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-4 col-md-4">
+								<div class="form-group">
+									<label class="control-label" for="txtBairroDestino">Bairro Destino<span style="color: red;">*</span></label>
+									<input type="text" class="form-control" name="txtBairroDestino" readonly required>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-4">
+								<div class="form-group">
+									<label class="control-label" for="txtRuaDestino">Rua Destino<span style="color: red;">*</span></label>
+									<input type="text" class="form-control" name="txtRuaDestino" readonly required>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-4">
+								<div class="form-group">
+									<label class="control-label" for="txtNumeroDestino">Número Destino<span style="color: red;">*</span></label>
+									<input type="text" class="form-control" name="txtNumeroDestino" readonly required>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!-- FINAL: Dados da filial destino -->
+
+					<!-- INICIO: Dados da Entrega -->
+					<section class="secInfoEntrega well" id="secInfoEntrega">
+						<div class="page-header">
+                        	<h4>
+                          	 <h4><i class="fluigicon fluigicon-text-left icon-" aria-hidden="true"></i>  Informações da Entrega<small class="hidden-xs"></small></h4>
+                       		</h4>
+                        </div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-6">
+									<div class="form-group">
+										<label class="control-label" for="txtPrazoEntrega">Prazo de Entrega <span style="color: red;">*</span></label>
+										<div class="input-group date" id="txtPrazoEntrega">                                
+											<input type="text" class="form-control spanGroupText" name="txtPrazoEntrega" readonly required>
+											<span class="input-group-addon">
+												<span class="fluigicon fluigicon-calendar"></span>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-6 mt-3">
+									<button id="btnAddRow" type="button" class="btn btn-primary pull-right" addpaifilho="tbl_material" retirar-view ><i class="fluigicon fluigicon-plus-sign" aria-hidden="true"></i>  Adicionar Linha</button>
+									
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 mt-3 mb-3">
+									<div class="panel panel-primary">
+										<div class="panel-heading">
+										  <h3 class="panel-title">Material</h3>
+										</div>
+										<div class="panel-body">
+										  <table class="table table-hover" tablename="tbl_material" noaddbutton="true" nodeletebutton="true" style="margin-bottom: 0px;">
+											<thead>
+											  <tr>
+												<th></th>
+											  </tr>
+											</thead>
+											<tbody>
+											  <tr>
+												<td>
+												  <div class="form-group">
+													<select class="form-control" name="txtMaterial" dataset="CADASTRO_MERCADORIA" datasetkey="DESCRICAO" datasetvalue="DESCRICAO" addBlankLine="true">Selecione o material</select>
+												  </div>
+												</td>
+												<td class="acoes-linha">
+												  <a href="javascript:;" onclick="javascript:CustomBPM.cltrTabela.removeLinha(this, function(){return ''});" class="remove-linha" data-toggle="tooltip" title="Remover Item"><span class="fluigicon fluigicon-remove-circle fluigicon-sm remove-tblAcaoCorretiva"></span></a>
+												</td>
+											  </tr>
+											</tbody>
+										  </table>
+										</div>
+									  </div> 
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-6" hidden>
+									<div class="form-group">
+										<label class="control-label" for="txtCodigoRespAlmoxarifado">Responsável Almoxarifado</label>
+										<input type="text" class="form-control" name="txtCodigoRespAlmoxarifado" readonly>
+									</div>
+								</div>
+							</div>
+					</section>
+                    <!-- FINAL: Dados da Entrega -->
+
+					<!-- INÍCIO: Confirmação do Almoxarife -->
+					<section class="secAPROV_ALMOXARIFE well" id="secAPROV_ALMOXARIFE" style="display: none;" data-contem-info="APROV_ALMOXARIFE_EXECUTOR" data-exibe-active="[37]">
+						<div class="page-header">
+							<h4>
+								<span class="iconcheck clipboard-check"></span><i class="flaticon flaticon-document-approved icon-md" aria-hidden="true"></i>Recebimento da Mercadoria<small class="hidden-xs"></small>
+							</h4>
+						</div>
+						<div class="row">
+						<div class="col-xs-12 col-md-6">
+							<div class="form-group">
+								<label class="control-label" for="APROV_ALMOXARIFE">Confirma o recebimento da mercadoria?</label>
+								<div class="btn-group btn-group-justified" data-toggle="buttons">
+									<label class="btn btn-default sim"><input type="radio" name="APROV_ALMOXARIFE" id="APROV_ALMOXARIFE_S" value="Sim" data-exibicao="Sim"><i class="fas fa-check-square"></i> Sim</label>
+									<label class="btn btn-default nao"><input type="radio" name="APROV_ALMOXARIFE" id="APROV_ALMOXARIFE_N" value="Não" data-exibicao="Não"><i class="far fa-check-square"></i> Não</label>
+								</div>
+								<input type="hidden" name="APROV_ALMOXARIFE_EXECUTOR">
+								<input type="hidden" name="APROV_ALMOXARIFE_DATA">
+								<p class="help-block"></p>
+							</div>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12">
+								<div class="form-group">
+									<label class="control-label" for="APROV_ALMOXARIFE_OBS">Observações</label>
+									<textarea class="form-control" name="APROV_ALMOXARIFE_OBS" rows="5"></textarea>
+									<p class="help-block"></p>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!-- FINAL: Confirmação do Almoxarife -->
+					
+					<!-- INíCIO: footer -->
+					<section class="page-footer" id="secFooter">
+						<input type="hidden" name="DESCRITOR" >
+						<label for="DESCRITOR" class="hide control-label" style="display:none;">Atenção</label>
+					</section>
+					<!-- FINAL: footer -->
+        		</form>
+			</div>	
+    	</div>
+
+        
+	<script src="/webdesk/vcXMLRPC.js" type="text/javascript"></script>
+
+	<script type="text/javascript" src="//cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/2.0.0/js/dataTables.bootstrap5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>    
+	<script src="jquery.validate.min.js" type="text/javascript"></script>   
+	<script src="scriptsglobais.js" type="text/javascript"></script>
+	<script src="script.js" type="text/javascript"></script>
+	<script>
+	function setSelectedZoomItem(selectedItem) {
+		if(selectedItem.inputId == 'txtFilialOrigem'){
+			$('[name="txtCodigoFilialOrigem"]').val(selectedItem.txtCodigoFilial+' - '+selectedItem.txtNomeFilial);
+			$('[name="txtCEPOrigem"]').val(selectedItem.txtCEP);
+			$('[name="txtEstadoOrigem"]').val(selectedItem.txtEstado);
+			$('[name="txtCidadeOrigem"]').val(selectedItem.txtCidade);
+			$('[name="txtBairroOrigem"]').val(selectedItem.txtBairro);
+			$('[name="txtRuaOrigem"]').val(selectedItem.txtRua);
+			$('[name="txtNumeroOrigem"]').val(selectedItem.txtNumero);
+		}
+		if(selectedItem.inputId == 'txtFilialDestino'){
+			$('[name="txtCodigoFilialDestino"]').val(selectedItem.txtCodigoFilial+' - '+selectedItem.txtNomeFilial);
+			$('[name="txtCodigoRespAlmoxarifado"]').val(selectedItem.txtCodigoRespAlmoxarifado);
+			$('[name="txtCEPDestino"]').val(selectedItem.txtCEP);
+			$('[name="txtEstadoDestino"]').val(selectedItem.txtEstado);
+			$('[name="txtCidadeDestino"]').val(selectedItem.txtCidade);
+			$('[name="txtBairroDestino"]').val(selectedItem.txtBairro);
+			$('[name="txtRuaDestino"]').val(selectedItem.txtRua);
+			$('[name="txtNumeroDestino"]').val(selectedItem.txtNumero);
+		}
+	} 
+	</script>	    
+</body>
+</html>

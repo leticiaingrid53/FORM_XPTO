@@ -1,0 +1,136 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+    <link type="text/css" rel="stylesheet" href="custom.css">
+</head>
+<body class="Customiza">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	<!-- INÍCIO: título de cabeçalho -->
+	<div class="page-header">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1 class="fs-no-margin fs-ellipsis fs-full-width"><i class="fluigicon fluigicon-home icon-md" aria-hidden="true"></i>Pré Cadastro de Filial<small class="hidden-xs"></small></h1>
+			</div>
+		</div>
+	</div>
+	<!-- INICIO: Dados da Filial -->
+	<section class="secInfoFilial well" id="secInfoFilial">
+		<div class="page-header">
+			<h4>
+				<h4><i class="fluigicon fluigicon-copy icon-md" aria-hidden="true"></i> Dados do Filial<small class="hidden-xs"></small></h4>
+			</h4>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-4 col-md-4 mb-3">
+				<div class="form-group">
+				<label class="control-label" for="txtCodigoFilial">Código <span style="color: red;">*</span></label>
+				<input type="text" class="form-control" name="txtCodigoFilial"  >
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-8 col-md-8 mb-3">
+				<div class="form-group">
+					<label class="control-label" for="txtNomeFilial">Nome <span style="color: red;">*</span></label>
+					<input type="text" class="form-control" name="txtNomeFilial"  >
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sx-12 col-sm-6 col-md-6">
+				<div class="form-group">
+					<label class="control-label" for="txtCEP">CEP <span style="color: red;">*</span></label>
+					<div class="input-group">
+						<input type="text" class="form-control cepmask" name="txtCEP" id="txtCEP"  >
+						<span class="input-group-btn">
+							<button onclick="buscaCEP();" class="btn btn-default" type="button"><span class="fluigicon fluigicon-search-test"></span></button>
+						</span>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-2">
+				<div class="form-group">
+					<label class="control-label" for="txtEstado">Estado <span style="color: red;">*</span></label>
+					<input type="text" class="form-control cep" name="txtEstado" readonly  >
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-3">
+				<div class="form-group">
+					<label class="control-label" for="txtCidade">Cidade <span style="color: red;">*</span></label>
+					<input type="text" class="form-control cep" name="txtCidade" readonly  >
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-2">
+				<div class="form-group">
+					<label class="control-label" for="txtBairro">Bairro <span style="color: red;">*</span></label>
+					<input type="text" class="form-control cep" name="txtBairro" readonly  >
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-3">
+				<div class="form-group">
+					<label class="control-label" for="txtRua">Rua <span style="color: red;">*</span></label>
+					<input type="text" class="form-control cep" name="txtRua" readonly  >
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-2">
+				<div class="form-group">
+					<label class="control-label" for="txtNumero">Número <span style="color: red;">*</span></label>
+					<input type="text" class="form-control cep" name="txtNumero"  >
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-6" id="controlaview">
+				<div class="form-group">
+					<label class="control-label" for="txtResponsavelAlmoxarife">Responsável do Almoxarifado <span style="color: red;">*</span></label>
+					<input type="zoom" class="form-control" id="txtResponsavelAlmoxarife" name="txtResponsavelAlmoxarife"
+					data-zoom="{
+						'displayKey':'colleagueName',
+						'datasetId':'colleague',
+						'placeholder':'Selecione a filial',
+						'fields':[
+						{
+							'field':'colleagueId',
+							'label':'Código',
+							'standard':'true',
+							'search':'false'
+						},
+						{
+							'field':'colleagueName',
+							'label':'Nome',
+							'standard':'true',
+							'search':'true'
+						}
+						]
+					}"
+					/>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6" hidden>
+				<div class="form-group">
+					<label class="control-label" for="txtCodigoRespAlmoxarifado"></label>
+					<input type="text" class="form-control" name="txtCodigoRespAlmoxarifado" readonly>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- FINAL: Dados da Filial -->
+</form>
+</div>
+<script src="/webdesk/vcXMLRPC.js" type="text/javascript"></script>
+<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>  
+<script src="script.js" type="text/javascript"></script>
+<script>
+	function setSelectedZoomItem(selectedItem) {
+		if(selectedItem.inputId == 'txtResponsavelAlmoxarife'){
+			$('[name="txtCodigoRespAlmoxarifado"]').val(selectedItem.colleagueId);
+		}
+	} 
+	</script>	
+</body>
+</html>
